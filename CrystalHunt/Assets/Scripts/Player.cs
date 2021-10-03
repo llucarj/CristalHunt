@@ -78,10 +78,22 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground") IsJumping = false;
+
+        if (collision.gameObject.tag == "Platform")
+        {
+            IsJumping = false;
+            gameObject.transform.parent = collision.gameObject.transform;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground") IsJumping = true;
+
+        if (collision.gameObject.tag == "Platform")
+        {
+            IsJumping = true;
+            gameObject.transform.parent = null;
+        }
     }
 }

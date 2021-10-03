@@ -2666,6 +2666,18 @@ PrefabInstance:
       propertyPath: JumpForce
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5692351514635200802, guid: d884c77cd0d840345841de46febd83a6, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692351514635200802, guid: d884c77cd0d840345841de46febd83a6, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692351514635200802, guid: d884c77cd0d840345841de46febd83a6, type: 3}
+      propertyPath: m_GravityScale
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d884c77cd0d840345841de46febd83a6, type: 3}
 --- !u!1 &519420028
