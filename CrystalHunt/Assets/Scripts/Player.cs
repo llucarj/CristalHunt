@@ -86,6 +86,7 @@ public class Player : MonoBehaviour
             audioSource.clip = deathSound;
             audioSource.Play();
             anim.SetBool("death", true);
+            GameController.instance.ShowGameOver();
         }
     }
 
