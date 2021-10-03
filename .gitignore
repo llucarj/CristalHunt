@@ -21,6 +21,7 @@
 
 # Visual Studio cache directory
 .vs/
+CrystalHunt/.vsconfig
 
 # Gradle cache directory
 .gradle/
