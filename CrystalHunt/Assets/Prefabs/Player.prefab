@@ -333,3 +333,4 @@ MonoBehaviour:
   DoubleJumping: 0
   audioSource: {fileID: 6747652939908974368}
   jumpSound: {fileID: 8300000, guid: bad57e8c9c3c20c4a9e2ef3c6331c20f, type: 3}
+  deathSound: {fileID: 8300000, guid: 5279489896b4ec54b92d1d801b73d107, type: 3}

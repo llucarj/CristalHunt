@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rig;
     public AudioSource audioSource;
     public AudioClip jumpSound;
+    public AudioClip deathSound;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,6 @@ public class Player : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         audioSource.playOnAwake = false;
-        audioSource.clip = jumpSound;
     }
 
     // Update is called once per frame
@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
             {
                 rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
                 DoubleJumping = true;
+                audioSource.clip = jumpSound;
                 audioSource.Play();
             } else
             {
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
                 {
                     rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
                     DoubleJumping = false;
+                    audioSource.clip = jumpSound;
                     audioSource.Play();
                 }
             }
@@ -78,6 +80,13 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground") IsJumping = false;
+
+        if (collision.gameObject.tag == "Water")
+        {
+            audioSource.clip = deathSound;
+            audioSource.Play();
+            anim.SetBool("death", true);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
