@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip jumpSound;
     public AudioClip deathSound;
+    public AudioClip finishSound;
 
     // Start is called before the first frame update
     void Start()
@@ -100,6 +101,10 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "NextLevel")
         {
+            Speed = 0f;
+            anim.SetBool("walk", false);
+            audioSource.clip = finishSound;
+            audioSource.Play();
             GameController.instance.ShowGameFinish();
         }
 
