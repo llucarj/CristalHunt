@@ -30,5 +30,6 @@ public class GameController : MonoBehaviour
     {
         BackgroundSound.instance.StartBackgroundSound();
         SceneManager.LoadScene("SampleScene");
+
     }
 }
