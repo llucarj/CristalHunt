@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance;
     public GameObject gameOver;
+    public GameObject gameFinish;
     public Text scoreText;
     public int totalScore;
 
@@ -27,6 +28,12 @@ public class GameController : MonoBehaviour
     public void ShowGameOver()
     {
         gameOver.SetActive(true);
+        BackgroundSound.instance.StopBackgroundSound();
+    }
+
+    public void ShowGameFinish()
+    {
+        gameFinish.SetActive(true);
         BackgroundSound.instance.StopBackgroundSound();
     }
 

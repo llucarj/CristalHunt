@@ -97,6 +97,12 @@ public class Player : MonoBehaviour
             gameObject.transform.parent = collision.gameObject.transform;
         }
 
+
+        if (collision.gameObject.tag == "NextLevel")
+        {
+            GameController.instance.ShowGameFinish();
+        }
+
         if (!anim.GetBool("death"))
         {
             if (collision.gameObject.tag == "Water")
