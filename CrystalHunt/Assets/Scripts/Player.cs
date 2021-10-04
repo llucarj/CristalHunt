@@ -84,19 +84,42 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground") IsJumping = false;
 
-        if (collision.gameObject.tag == "Water")
-        {
-            audioSource.clip = deathSound;
-            audioSource.Play();
-            anim.SetBool("death", true);
-            Speed = 0f;
-            GameController.instance.ShowGameOver();
-        }
-
         if (collision.gameObject.tag == "Platform")
         {
             IsJumping = false;
             gameObject.transform.parent = collision.gameObject.transform;
+        }
+
+        if (!anim.GetBool("death"))
+        {
+            if (collision.gameObject.tag == "Water")
+            {
+                audioSource.clip = deathSound;
+                audioSource.Play();
+                anim.SetBool("death", true);
+                GameController.instance.ShowGameOver();
+            }
+
+            if (collision.gameObject.tag == "Enemy")
+            {
+                float posEnemy = collision.gameObject.transform.position.x;
+                float posJogador = gameObject.transform.position.x;
+                float difPos = posJogador - posEnemy;
+                float impulse = JumpForce / (2 * difPos);
+                Debug.Log($"impulse: {impulse}");
+
+                //Empurra o player na direção contrária ao inimigo - como se fosse um baque
+                rig.AddForce(new Vector2(impulse, 0f), ForceMode2D.Impulse);
+
+                var enemyBoxColl = collision.gameObject.GetComponent<BoxCollider2D>();
+                enemyBoxColl.isTrigger = true;
+
+                audioSource.clip = deathSound;
+                audioSource.Play();
+                anim.SetBool("death", true);
+                Speed = 0f;
+                GameController.instance.ShowGameOver();
+            }
         }
     }
 
