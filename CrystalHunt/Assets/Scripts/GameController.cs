@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         instance = this;
+        gameOver.SetActive(false);
     }
 
     // Update is called once per frame
