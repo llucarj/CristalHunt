@@ -84,6 +84,12 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground") IsJumping = false;
 
+        if (collision.gameObject.tag == "Platform")
+        {
+            IsJumping = false;
+            gameObject.transform.parent = collision.gameObject.transform;
+        }
+
         if (collision.gameObject.tag == "Water")
         {
             audioSource.clip = deathSound;
@@ -93,10 +99,16 @@ public class Player : MonoBehaviour
             GameController.instance.ShowGameOver();
         }
 
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.tag == "Enemy")
         {
-            IsJumping = false;
-            gameObject.transform.parent = collision.gameObject.transform;
+            var enemyBoxColl = collision.gameObject.GetComponent<BoxCollider2D>();
+            enemyBoxColl.isTrigger = true;
+
+            audioSource.clip = deathSound;
+            audioSource.Play();
+            anim.SetBool("death", true);
+            Speed = 0f;
+            GameController.instance.ShowGameOver();
         }
     }
 
