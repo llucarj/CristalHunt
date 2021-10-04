@@ -25,8 +25,8 @@ public class Crystal : MonoBehaviour
         {
             sr.enabled = false;
             circle.enabled = false;
-            GameControler.instance.totalScore += Score;
-            GameControler.instance.UpdateScoreText();
+            GameController.instance.totalScore += Score;
+            GameController.instance.UpdateScoreText();
             Destroy(gameObject,1f);
         }
     }
