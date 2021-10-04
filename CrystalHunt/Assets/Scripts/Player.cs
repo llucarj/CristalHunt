@@ -67,6 +67,7 @@ public class Player : MonoBehaviour
                 DoubleJumping = true;
                 audioSource.clip = jumpSound;
                 audioSource.Play();
+                anim.SetBool("jump", true);
             } else
             {
                 if(DoubleJumping)
@@ -82,7 +83,13 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground") IsJumping = false;
+        if (collision.gameObject.tag == "Ground")
+        {
+            IsJumping = false;
+            anim.SetBool("jump", false);
+        }
+
+       
 
         if (collision.gameObject.tag == "Platform")
         {
@@ -129,7 +136,8 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "Platform")
         {
-            IsJumping = true;
+            IsJumping = false;
+            
             gameObject.transform.parent = null;
         }
     }
