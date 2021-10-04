@@ -24,7 +24,18 @@ public class BackgroundSound : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartBackgroundSound();
+    }
+
+    public void StartBackgroundSound()
+    {
         audio = GetComponent<AudioSource>();
         audio.Play();
+    }
+
+    public void StopBackgroundSound()
+    {
+        audio = GetComponent<AudioSource>();
+        audio.Stop();
     }
 }
